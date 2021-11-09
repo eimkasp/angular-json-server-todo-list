@@ -1,5 +1,14 @@
 # AngularJsonServerTodoList
 
+
+This project uses JSON-Server
+
+Database files are added in: `src/app/database/db.json`
+
+
+To run JSON server database in this project, use this command
+`json-server --watch src/database/db.json`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
 
 ## Development server
