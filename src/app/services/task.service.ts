@@ -11,6 +11,7 @@ export class TaskService {
   constructor(private http : HttpClient) { }
 
   getTasks() {
-    return "labas";
+    // Siuncama get uzklausa i API
+    return this.http.get(this.apiUrl);
   }
 }
