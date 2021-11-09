@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+// Importuojame tasks service
 import { TaskService } from './services/task.service';
 
 @Component({
@@ -9,13 +11,16 @@ import { TaskService } from './services/task.service';
 export class AppComponent {
   title = 'angular-json-server-todo-list';
 
-  constructor(private _taskService : TaskService) {
+  public tasks = [];
+  // Injectiname tasks service i komponenta
+  constructor(private _taskService: TaskService) {
 
     // Gauname duomenis is task Service
-      this._taskService.getTasks().subscribe((data) => {
-        console.log(data);
+    this._taskService
+      .getTasks()
+      .subscribe((data : any) => {
+          this.tasks = data;
+          // console.log(this.tasks);
       });
-
   }
-
 }
