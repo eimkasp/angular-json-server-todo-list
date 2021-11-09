@@ -6,12 +6,17 @@
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th>Task Title</th>
           <th>Author</th>
           <th>ID</th>
         </tr>
       </thead>
       <tr *ngFor="let task of tasks">
+        <td>
+          <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
+          <input type="checkbox">
+        </td>
         <td>{{ task.title }}</td>
         <td>Author: {{ task.author }}</td>
         <td>{{ task.id }}</td>
