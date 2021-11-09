@@ -1,6 +1,22 @@
-
 <div class="container">
-  <h1>Todo List</h1>
-  <a href="#" class="btn btn-primary">labas</a>
+  <div class="row">
+    <div class="col-12">
+      <h1>Todo List</h1>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task Title</th>
+          <th>Author</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.title }}</td>
+        <td>Author: {{ task.author }}</td>
+        <td>{{ task.id }}</td>
+      </tr>
+    </table>
+  </div>
 </div>
 <router-outlet></router-outlet>

@@ -11,7 +11,7 @@ import { TaskService } from './services/task.service';
 export class AppComponent {
   title = 'angular-json-server-todo-list';
 
-  public tasks = [];
+  public tasks : any = [];
   // Injectiname tasks service i komponenta
   constructor(private _taskService: TaskService) {
 
