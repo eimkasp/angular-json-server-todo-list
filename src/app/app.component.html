@@ -21,7 +21,7 @@
           <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
           <!-- [checked] - dinaminis checked atributo priskyrimas -->
           <input type="checkbox" [checked]="task.completed"
-          (click)="task.completed = !task.completed"
+          (change)="task.completed = !task.completed"
           >
         </td>
         <td><i class="bi-alarm"></i> {{ task.title }}</td>
