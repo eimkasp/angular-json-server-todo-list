@@ -3,6 +3,18 @@
     <div class="col-12">
       <h1><i class="bi bi-activity"></i> Todo List </h1>
     </div>
+
+    <div class="col-12">
+      <!-- TODO: Pakeisti forma i <app-task-create> -->
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="Enter Task name" name="title" class="form-controll" />
+        </div>
+        <div class="form-group mt-3">
+          <input type="submit" class="btn btn-primary" value="Add Task">
+        </div>
+      </form>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -15,14 +27,12 @@
       <!-- Dinaminis klases pridejimas elementui:
       [class.class-name]
       -->
-      <tr *ngFor="let task of tasks"
-      [class.task-completed]="task.completed">
+      <tr *ngFor="let task of tasks" [class.task-completed]="task.completed">
         <td>
           <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
           <!-- [checked] - dinaminis checked atributo priskyrimas -->
           <input type="checkbox" [checked]="task.completed"
-          (change)="task.completed = !task.completed"
-          >
+          (change)="toggleTask(task)">
         </td>
         <td><i class="bi-alarm"></i> {{ task.title }}</td>
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>

@@ -25,4 +25,17 @@ export class AppComponent {
           console.log(this.tasks);
       });
   }
+
+  toggleTask(task : Task) {
+    /* Jei task.completed buvo true, tai pataps false */
+    /* Jei task.completed buvo false, tai pataps true */
+    task.completed = !task.completed;
+    console.log(task);
+
+    // Iskvieciame task service toggle task funkcija
+    // atnaujinti duomenis duombazeje/serveryje
+    this._taskService.toggleTask(task).subscribe((data : any) => {
+      console.log(data);
+    });
+  }
 }
