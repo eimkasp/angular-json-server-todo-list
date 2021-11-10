@@ -22,6 +22,7 @@ export class AppComponent {
       .getTasks()
       .subscribe((data : Task[]) => {
           this.tasks = data;
+          console.log(this.tasks);
       });
   }
 }

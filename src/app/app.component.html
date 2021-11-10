@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1>Todo List</h1>
+      <h1><i class="bi bi-activity"></i> Todo List </h1>
     </div>
     <table class="table">
       <thead>
@@ -12,13 +12,17 @@
           <th>ID</th>
         </tr>
       </thead>
-      <tr *ngFor="let task of tasks">
+      <!-- Dinaminis klases pridejimas elementui:
+      [class.class-name]
+      -->
+      <tr *ngFor="let task of tasks"
+      [class.task-completed]="task.completed">
         <td>
           <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
-          <input type="checkbox">
+          <input type="checkbox" [checked]="task.completed">
         </td>
-        <td>{{ task.title }}</td>
-        <td>Author: {{ task.author }}</td>
+        <td><i class="bi-alarm"></i> {{ task.title }}</td>
+        <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>{{ task.id }}</td>
       </tr>
     </table>
