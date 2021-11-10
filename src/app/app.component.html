@@ -19,7 +19,10 @@
       [class.task-completed]="task.completed">
         <td>
           <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
-          <input type="checkbox" [checked]="task.completed">
+          <!-- [checked] - dinaminis checked atributo priskyrimas -->
+          <input type="checkbox" [checked]="task.completed"
+          (click)="task.completed = !task.completed"
+          >
         </td>
         <td><i class="bi-alarm"></i> {{ task.title }}</td>
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
