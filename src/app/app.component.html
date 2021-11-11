@@ -1,43 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <h1><i class="bi bi-activity"></i> Todo List </h1>
+    <div class="col-sm-2 bg-dark">
+      <div class="card mt-3">
+        <div class="card-header">
+          Meniu
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a routerLink="">Tasks</a>
+          </li>
+          <li class="list-group-item">
+            <a routerLink="users">Users</a>
+          </li>
+          <li class="list-group-item">
+            Stats
+            <span class="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger">
+            Coming Soon!
+            </span>
+
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <div class="col-12">
-      <!-- TODO: Pakeisti forma i <app-task-create> -->
-      <app-task-create (newItemEvent)="getTasks()"></app-task-create>
+    <div class="col-sm-10">
+      <router-outlet></router-outlet>
+
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Task Title</th>
-          <th>Author</th>
-          <th>ID</th>
-        </tr>
-      </thead>
-      <!-- Dinaminis klases pridejimas elementui:
-      [class.class-name]
-      -->
-      <tr *ngFor="let task of tasks" [class.task-completed]="task.completed">
-        <td>
-          <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
-          <!-- [checked] - dinaminis checked atributo priskyrimas -->
-          <input type="checkbox" [checked]="task.completed" (change)="toggleTask(task)">
-        </td>
-        <td><i class="bi-alarm"></i> {{ task.title }}</td>
-        <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
-        <td>{{ task.id }}</td>
-        <td>
-          <button
-          (click)="deleteTask(task)"
-          class="btn btn-danger bg-danger">
-            <i class="bi bi-trash-fill"></i>
-          </button>
-        </td>
-      </tr>
-    </table>
   </div>
+
 </div>
-<router-outlet></router-outlet>
