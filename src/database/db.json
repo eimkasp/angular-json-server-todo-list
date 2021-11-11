@@ -53,6 +53,12 @@
       "completed": false,
       "author": "labas",
       "id": 9
+    },
+    {
+      "title": "labgas",
+      "completed": false,
+      "author": "321",
+      "id": 10
     }
   ],
   "users": [
@@ -60,6 +66,13 @@
       "id": 1,
       "name": "Test",
       "email": "labas@gmail.com"
+    }
+  ],
+  "projects": [
+    {
+      "id" : 1,
+      "name" : "Project 1",
+      "logo" : "#"
     }
   ]
 }
