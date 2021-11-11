@@ -7,15 +7,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // importuojame
+    HttpClientModule, // importuojame,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

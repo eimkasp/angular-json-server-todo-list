@@ -4,19 +4,62 @@
       "id": 1,
       "title": "Užduotis 1",
       "author": "typicode",
-      "completed": true
+      "completed": false
     },
     {
       "id": 2,
       "title": "Sukurti taskDelte funkcija",
       "author": "labas",
-      "completed": true
+      "completed": false
     },
     {
       "id": 3,
       "title": "AS buvau atnaujintas",
       "author": "labas",
       "completed": false
+    },
+    {
+      "title": "labas",
+      "completed": false,
+      "author": "123",
+      "id": 4
+    },
+    {
+      "title": "321312",
+      "completed": false,
+      "author": "321312",
+      "id": 5
+    },
+    {
+      "title": "labas",
+      "completed": false,
+      "author": "labas",
+      "id": 6
+    },
+    {
+      "title": "321312",
+      "completed": false,
+      "author": "321312",
+      "id": 7
+    },
+    {
+      "title": "321321",
+      "completed": false,
+      "author": "321312",
+      "id": 8
+    },
+    {
+      "title": "nauja uzduotis",
+      "completed": false,
+      "author": "labas",
+      "id": 9
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Test",
+      "email": "labas@gmail.com"
     }
   ]
 }

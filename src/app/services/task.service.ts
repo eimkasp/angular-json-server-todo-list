@@ -16,6 +16,8 @@ export class TaskService {
   getTasks() : Observable<Task[]> {
     let uri = this.apiUrl
     // Siuncama get uzklausa i API
+
+    // .get() - gauname duomenis is duombazes
     return this.http.get<Task[]>(uri);
   }
 
@@ -33,13 +35,20 @@ export class TaskService {
 
     // Issiunciama uzklausa duomenu atnaujinimui
     // Daugiau pasiskaitymui apie http metodus angluar: https://blog.angular-university.io/angular-http/
+    /* Kreipdamiesi Patch būdų, galime paredaguoti užduotį */
     return this.http.patch(uri, body);
 
     // Pvz atnaujinti visus duomenis is objekto
     return this.http.patch(uri, task);
   }
 
-  createTask() {
+  createTask(task : Task) {
+    let uri = this.apiUrl;
+    // Kreipdamiesi POST metodu, galime sukurti nauja uzduoty duombazeje
+    return this.http.post(uri, task);
+  }
+
+  deleteTask(task : Task) {
 
   }
 
@@ -47,7 +56,5 @@ export class TaskService {
 
   }
 
-  deleteTask() {
 
-  }
 }

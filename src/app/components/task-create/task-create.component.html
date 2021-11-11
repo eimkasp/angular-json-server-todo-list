@@ -1,0 +1,34 @@
+<h1>Create Task</h1>
+
+<form (ngSubmit)="taskCreate()">
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group">
+        <!-- [(ngModel)] -->
+        <input type="text"
+        [(ngModel)]="task.title"
+        placeholder="Enter Task name"
+        name="title"
+        class="form-controll" />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="form-group">
+        <input type="text"
+        placeholder="Enter Author name"
+        [(ngModel)]="task.author"
+        name="author"
+        class="form-controll" />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Add Task">
+      </div>
+    </div>
+  </div>
+
+
+</form>
