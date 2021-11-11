@@ -6,14 +6,7 @@
 
     <div class="col-12">
       <!-- TODO: Pakeisti forma i <app-task-create> -->
-      <form>
-        <div class="form-group">
-          <input type="text" placeholder="Enter Task name" name="title" class="form-controll" />
-        </div>
-        <div class="form-group mt-3">
-          <input type="submit" class="btn btn-primary" value="Add Task">
-        </div>
-      </form>
+        <app-task-create (newItemEvent)="getTasks()"></app-task-create>
     </div>
     <table class="table">
       <thead>

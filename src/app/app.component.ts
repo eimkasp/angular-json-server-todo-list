@@ -13,20 +13,23 @@ export class AppComponent {
   title = 'angular-json-server-todo-list';
 
   // Nurodome, kad kintamasis yra Task tipo masyvas
-  public tasks : Task[] = [];
+  public tasks: Task[] = [];
   // Injectiname tasks service i komponenta
   constructor(private _taskService: TaskService) {
+      this.getTasks();
+  }
 
+  getTasks() {
     // Gauname duomenis is task Service
     this._taskService
       .getTasks()
-      .subscribe((data : Task[]) => {
-          this.tasks = data;
-          console.log(this.tasks);
+      .subscribe((data: Task[]) => {
+        this.tasks = data;
+        console.log(this.tasks);
       });
   }
 
-  toggleTask(task : Task) {
+  toggleTask(task: Task) {
     /* Jei task.completed buvo true, tai pataps false */
     /* Jei task.completed buvo false, tai pataps true */
     task.completed = !task.completed;
@@ -34,7 +37,7 @@ export class AppComponent {
 
     // Iskvieciame task service toggle task funkcija
     // atnaujinti duomenis duombazeje/serveryje
-    this._taskService.toggleTask(task).subscribe((data : any) => {
+    this._taskService.toggleTask(task).subscribe((data: any) => {
       console.log(data);
     });
   }
