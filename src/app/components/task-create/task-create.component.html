@@ -24,6 +24,15 @@
     </div>
 
     <div class="col-4">
+      <select name="priority" [(ngModel)]="task.priority">
+        <!-- Perduodame su ngValue string reiksme -->
+        <option value="high" ngValue="high">High</option>
+        <!-- Perduodame su [ngValue] string reiksme kaip kintamaji -->
+        <option value="low" [ngValue]="'low'">Low</option>
+      </select>
+    </div>
+
+    <div class="col-4">
       <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Add Task">
       </div>
