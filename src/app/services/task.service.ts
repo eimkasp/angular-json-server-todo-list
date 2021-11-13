@@ -18,6 +18,8 @@ export class TaskService {
     // Siuncama get uzklausa i API
 
     // .get() - gauname duomenis is duombazes
+
+    // <Task[]> - pasako, kad musu uzklausa grazins Task objektu
     return this.http.get<Task[]>(uri);
   }
 

@@ -26,7 +26,19 @@
           <!-- [checked] - dinaminis checked atributo priskyrimas -->
           <input type="checkbox" [checked]="task.completed" (change)="toggleTask(task)">
         </td>
-        <td><i class="bi-alarm"></i> {{ task.title }}</td>
+        <td>
+          <!-- Rodoma: Jei uzduoties completed kintamasis yra true -->
+          <!-- ngClass panaudojimo pavyzdiai: https://stackoverflow.com/questions/35269179/angular-conditional-class-with-ngclass -->
+          <i class="bi-alarm "
+          [class.text-success]="task.completed"
+          [ngClass]="{'text-success': task.completed,  'text-danger': !task.completed  }"
+          *ngIf="task.completed"
+          ></i>
+
+          <!-- Rodoma: Jei uzduoties completed kintamasis yra false -->
+          <i class="bi-alarm text-danger" *ngIf="!task.completed"></i>
+          {{ task.title }}
+        </td>
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>{{ task.id }}</td>
         <td>
