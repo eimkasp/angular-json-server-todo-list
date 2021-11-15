@@ -1,15 +1,36 @@
 <h1>Create Task</h1>
 
-<form (ngSubmit)="taskCreate()">
+<!-- #taskForm - lokalus template kintamasis (pasiekiamas tik siame html faile)
+ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
+-->
+<form (ngSubmit)="taskCreate(taskForm)" #taskForm="ngForm">
   <div class="row">
     <div class="col-4">
       <div class="form-group">
-        <!-- [(ngModel)] -->
+        <!-- Formos laukelio validacija -->
+        <!-- #title - lokalus template kintamasis (pasiekiams tik siame html faile) -->
+        <!-- #title="ngModel" - jo tipas nusako, kad tai reiksme, kuri nustatoma laukeliui, per [(ngModel)] -->
+        <!-- [class.is-valid]="title.valid"] prideti klase elementui, pagal tam tikra salyga -->
         <input type="text"
         [(ngModel)]="task.title"
         placeholder="Enter Task name"
         name="title"
-        class="form-controll" />
+        #title="ngModel"
+        class="form-control is-valid"
+        [class.is-valid]="title.valid"
+        [class.is-invalid]="title.invalid && title.dirty"
+        required
+        />
+
+        <!-- Div'as naudojamas atvaizduoti, kad laukelis yra uzpildytas teisingai -->
+        <div *ngIf="title.valid && title.dirty" class="valid-feedback">
+          Looks good!
+        </div>
+
+        <!-- Div'as naudojams klaidoms atvaizduoti -->
+        <div *ngIf="title.invalid && title.dirty">
+            Title laukelis neuzpildytas
+        </div>
       </div>
     </div>
 
@@ -19,13 +40,14 @@
         placeholder="Enter Author name"
         [(ngModel)]="task.author"
         name="author"
-        class="form-controll" />
+        class="form-control" />
       </div>
     </div>
 
     <div class="col-4">
-      <select name="priority" [(ngModel)]="task.priority">
+      <select name="priority" [(ngModel)]="task.priority" class="form-select">
         <!-- Perduodame su ngValue string reiksme -->
+        <option value="" disabled>Select priority</option>
         <option value="high" ngValue="high">High</option>
         <!-- Perduodame su [ngValue] string reiksme kaip kintamaji -->
         <option value="low" [ngValue]="'low'">Low</option>
@@ -34,10 +56,8 @@
 
     <div class="col-4">
       <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Add Task">
+        <input type="submit" class="btn btn-primary mt-3" value="Add Task">
       </div>
     </div>
   </div>
-
-
 </form>
