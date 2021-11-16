@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EventEmitter } from '@angular/core';
 import { Task } from '../interfaces/task';
 
 @Injectable({
@@ -8,12 +9,17 @@ import { Task } from '../interfaces/task';
 })
 export class TaskService {
 
+  public itemAdded$: EventEmitter<boolean>;
+
+
   // API Adresas is kur gausime duomenis
-  private apiUrl : string = 'http://localhost:3000/tasks';
-  constructor(private http : HttpClient) { }
+  private apiUrl: string = 'http://localhost:3000/tasks';
+  constructor(private http: HttpClient) {
+    this.itemAdded$ = new EventEmitter();
+  }
 
   // Interface'o panaudojimas service dalyje
-  getTasks() : Observable<Task[]> {
+  getTasks(): Observable<Task[]> {
     let uri = this.apiUrl
     // Siuncama get uzklausa i API
 
@@ -23,11 +29,12 @@ export class TaskService {
     return this.http.get<Task[]>(uri);
   }
 
+
   // Pakeiciame task.completed reiksme Serveryje
-  toggleTask(task : Task) {
+  toggleTask(task: Task) {
 
     // Budas 1 aprasyti kreipimasi i url
-    let uri = this.apiUrl + "/" +  task.id;
+    let uri = this.apiUrl + "/" + task.id;
     // Budas 2 aprasyti kreipimasi i url *string sujungimas
     uri = `${this.apiUrl}/${task.id}`;
     console.log("Uzklausa: " + uri);
@@ -44,14 +51,16 @@ export class TaskService {
     return this.http.patch(uri, task);
   }
 
-  createTask(task : Task) {
+  createTask(task: Task) {
     let uri = this.apiUrl;
     // Kreipdamiesi POST metodu, galime sukurti nauja uzduoty duombazeje
+    this.itemAdded$.emit(true);
+
     return this.http.post(uri, task);
   }
 
-  deleteTask(task : Task) {
-    let uri = this.apiUrl + "/" +  task.id;
+  deleteTask(task: Task) {
+    let uri = this.apiUrl + "/" + task.id;
 
 
     // Kreipdamisei DELETE metodu i: http://localhost:3000/tasks/id

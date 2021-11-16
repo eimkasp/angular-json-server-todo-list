@@ -12,6 +12,10 @@ export class TasksComponent implements OnInit {
   // Injectiname tasks service i komponenta
   constructor(private _taskService: TaskService) {
     this.getTasks();
+    _taskService.itemAdded$.subscribe(data => {
+      this.getTasks();
+    });
+
   }
 
   ngOnInit(): void {
