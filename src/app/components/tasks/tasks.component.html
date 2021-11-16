@@ -20,7 +20,7 @@
       <!-- Dinaminis klases pridejimas elementui:
       [class.class-name]
       -->
-      <tr *ngFor="let task of tasks" [class.task-completed]="task.completed">
+      <tr *ngFor="let task of tasks" [class.task-completed]="task.completed" [class.bg-danger]="task.id == selectedTask?.id">
         <td>
           <!-- Ateityje si elementa naudosime, pazymeti uzduotis kaip baigtas -->
           <!-- [checked] - dinaminis checked atributo priskyrimas -->
@@ -29,11 +29,8 @@
         <td>
           <!-- Rodoma: Jei uzduoties completed kintamasis yra true -->
           <!-- ngClass panaudojimo pavyzdiai: https://stackoverflow.com/questions/35269179/angular-conditional-class-with-ngclass -->
-          <i class="bi-alarm "
-          [class.text-success]="task.completed"
-          [ngClass]="{'text-success': task.completed,  'text-danger': !task.completed  }"
-          *ngIf="task.completed"
-          ></i>
+          <i class="bi-alarm " [class.text-success]="task.completed"
+            [ngClass]="{'text-success': task.completed,  'text-danger': !task.completed  }" *ngIf="task.completed"></i>
 
           <!-- Rodoma: Jei uzduoties completed kintamasis yra false -->
           <i class="bi-alarm text-danger" *ngIf="!task.completed"></i>
@@ -44,9 +41,7 @@
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>{{ task.id }}</td>
         <td>
-          <button
-          (click)="deleteTask(task)"
-          class="btn btn-danger bg-danger">
+          <button (click)="deleteTask(task)" class="btn btn-danger bg-danger">
             <i class="bi bi-trash-fill"></i>
           </button>
         </td>
@@ -57,7 +52,9 @@
 
 
 <div *ngIf="showTaskDetails">
-  <app-task-details [task]="selectedTask" class="task-details-container"></app-task-details>
-  <div class="task-details-overlay" (click)="showTaskDetails = false">
+  <app-task-details [task]="selectedTask" class="task-details-container"
+    (taskDetailsCloseEvent)="toggleTaskDetails(null, true)">
+  </app-task-details>
+  <div class="task-details-overlay" (click)="toggleTaskDetails(null, true)">
   </div>
 </div>
