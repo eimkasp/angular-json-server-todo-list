@@ -1,0 +1,50 @@
+:host {
+  .task-details-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background: red;
+    padding: 20px;
+    min-width: 300px;
+    z-index: 10;
+    /* &::after {
+      content: '';
+      background: black;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0.5;
+      z-index: -1;
+    } */
+  }
+
+
+  .task-details-overlay {
+    background: black;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    /* Musu overaly elementas, ignoruoja click event'us */
+    // pointer-events: none;
+  }
+
+  .task-details-toggle-button {
+    cursor: pointer;
+  }
+
+  /* Pseudo - elementas */
+  .task-details-toggle-button::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      display: block;
+      background: red;
+
+  }
+}

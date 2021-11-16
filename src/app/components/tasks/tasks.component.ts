@@ -19,6 +19,21 @@ export class TasksComponent implements OnInit {
 
   public tasks: Task[] = [];
 
+  // Kitamasis kuris pasako ar atvaizduoti task details komponenta
+  public showTaskDetails : boolean = false;
+
+  // Pasirinkta uzduotis, kurios informacija tures buti atvaizduojama <app-task-details> komponente
+  public selectedTask : Task | null = null;
+
+  toggleTaskDetails(task : Task) {
+
+    if((this.selectedTask == task || this.showTaskDetails == false)  || this.selectedTask == null) {
+      this.showTaskDetails = !this.showTaskDetails;
+    }
+
+
+    this.selectedTask = task;
+  }
 
   getTasks() {
     // Gauname duomenis is task Service
