@@ -3,6 +3,26 @@
 <!-- #taskForm - lokalus template kintamasis (pasiekiamas tik siame html faile)
 ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
 -->
+
+<div class="alert alert-danger" *ngIf="taskForm.submitted && taskForm.invalid">
+  <!-- Div'as naudojams klaidoms atvaizduoti -->
+  <div *ngIf="title.errors?.['required']">
+    Title laukelis privalomas
+  </div>
+
+  <div *ngIf="title.errors?.['minlength']">
+    Title laukelis turi buti bent 4 simboliu
+  </div>
+
+  <div *ngIf="author.errors?.['required']">
+    Author laukelis yra privalomas
+  </div>
+
+  <div *ngIf="priority.errors?.['required']">
+    Priority laukelis yra privalomas
+  </div>
+</div>
+
 <form (ngSubmit)="taskCreate(taskForm)" #taskForm="ngForm">
   <div class="row">
     <div class="col-4">
@@ -11,6 +31,10 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
         <!-- #title - lokalus template kintamasis (pasiekiams tik siame html faile) -->
         <!-- #title="ngModel" - jo tipas nusako, kad tai reiksme, kuri nustatoma laukeliui, per [(ngModel)] -->
         <!-- [class.is-valid]="title.valid"] prideti klase elementui, pagal tam tikra salyga -->
+        <!--
+          Visi angular validatoriai: https://angular.io/api/forms/Validators
+          Visi html validatoriai: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation/
+        -->
         <input type="text"
         [(ngModel)]="task.title"
         placeholder="Enter Task name"
@@ -18,9 +42,9 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
         #title="ngModel"
         class="form-control is-valid"
         [class.is-valid]="title.valid"
-        [class.is-invalid]="title.invalid && title.dirty"
-        required
-        />
+        [class.is-invalid]="title.invalid && taskForm.submitted"
+        minlength="4"
+        required />
 
         <!-- Div'as naudojamas atvaizduoti, kad laukelis yra uzpildytas teisingai -->
         <div *ngIf="title.valid && title.dirty" class="valid-feedback">
@@ -29,23 +53,22 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
 
         <!-- Div'as naudojams klaidoms atvaizduoti -->
         <div *ngIf="title.invalid && title.dirty">
-            Title laukelis neuzpildytas
+          Title laukelis neteisingas
         </div>
       </div>
     </div>
 
     <div class="col-4">
       <div class="form-group">
-        <input type="text"
-        placeholder="Enter Author name"
-        [(ngModel)]="task.author"
-        name="author"
-        class="form-control" />
+        <input type="text" placeholder="Enter Author name" [(ngModel)]="task.author" name="author" class="form-control"
+          required #author="ngModel" [class.is-valid]="author.valid"
+          [class.is-invalid]="author.invalid && taskForm.submitted" />
       </div>
     </div>
 
     <div class="col-4">
-      <select name="priority" [(ngModel)]="task.priority" class="form-select">
+      <select name="priority" [(ngModel)]="task.priority" class="form-select" required #priority="ngModel"
+        [class.is-valid]="priority.valid" [class.is-invalid]="priority.invalid && taskForm.submitted">
         <!-- Perduodame su ngValue string reiksme -->
         <option value="" disabled>Select priority</option>
         <option value="high" ngValue="high">High</option>
@@ -55,8 +78,16 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
     </div>
 
     <div class="col-4">
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary mt-3" value="Add Task">
+      <div class="form-group mt-3">
+        <!-- Dinaminio disabled atributo pavyzdys
+        [disabled]="taskForm.invalid"
+        -->
+        <input type="submit" class="btn btn-primary me-3" value="Add Task">
+
+        <!-- Formos Reset Mygtuko pavyzdys -->
+        <button type="button" class="ms-3 btn btn-warning" (click)="taskForm.resetForm()">
+          Reset Form
+        </button>
       </div>
     </div>
   </div>
