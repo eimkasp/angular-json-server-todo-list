@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1><i class="bi bi-activity"></i> Todo List </h1>
+      <h1><i class="bi bi-activity"></i> Todo List {{ showTaskDetails }} </h1>
     </div>
 
     <div class="col-12">
@@ -37,7 +37,9 @@
 
           <!-- Rodoma: Jei uzduoties completed kintamasis yra false -->
           <i class="bi-alarm text-danger" *ngIf="!task.completed"></i>
-          {{ task.title }}
+          <span (click)="toggleTaskDetails(task)" class="task-details-toggle-button">
+            {{ task.title }}
+          </span>
         </td>
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>{{ task.id }}</td>
@@ -50,5 +52,12 @@
         </td>
       </tr>
     </table>
+  </div>
+</div>
+
+
+<div *ngIf="showTaskDetails">
+  <app-task-details [task]="selectedTask" class="task-details-container"></app-task-details>
+  <div class="task-details-overlay" (click)="showTaskDetails = false">
   </div>
 </div>
