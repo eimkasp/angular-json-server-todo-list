@@ -41,7 +41,9 @@
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>
           <span *ngIf="task.user">
-            Assigned to: {{ task.user?.email }}
+            <a routerLink="/users/{{ task.userId }}">
+              Assigned to: {{ task.user?.email }}
+            </a>
           </span>
 
           <span *ngIf="!task.user" class="text-danger">

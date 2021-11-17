@@ -13,7 +13,10 @@
     </div>
 
     <div>
-      Assigned to: {{ task?.user?.name }} / {{ task?.user?.email }}
+      Assigned to:
+      <a routerLink="/users/{{ task?.userId }}">
+        {{ task?.user?.name }} / {{ task?.user?.email }}
+      </a>
     </div>
 
 

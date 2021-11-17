@@ -11,7 +11,7 @@
       "id": 2,
       "title": "Sukurti taskDelte funkcija",
       "author": "labas",
-      "completed": false,
+      "completed": true,
       "userId": 2
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "title": "Uzduotis vartotojui 3",
-      "completed": false,
+      "completed": true,
       "author": "Test",
       "priority": "high",
       "userId": "3",
@@ -52,6 +52,16 @@
       "id": 1,
       "name": "Test123",
       "email": "labas@gmail.com"
+    },
+    {
+      "name": "User 2",
+      "email": "user2@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "User 3",
+      "email": "user3@gmail.com",
+      "id": 3
     }
   ],
   "projects": [

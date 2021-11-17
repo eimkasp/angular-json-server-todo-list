@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { UsersComponent } from './components/users/users.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
     TaskCreateComponent,
     TasksComponent,
     UsersComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
