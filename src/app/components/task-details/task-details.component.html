@@ -8,7 +8,14 @@
   </div>
 
   <div class="card-body">
-    Author: {{ task?.author }}
+    <div>
+      Author: {{ task?.author }}
+    </div>
+
+    <div>
+      Assigned to: {{ task?.user?.name }} / {{ task?.user?.email }}
+    </div>
+
 
     <hr>
     <div class="comments">
