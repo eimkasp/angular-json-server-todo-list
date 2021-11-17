@@ -39,6 +39,15 @@
           </span>
         </td>
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
+        <td>
+          <span *ngIf="task.user">
+            Assigned to: {{ task.user?.email }}
+          </span>
+
+          <span *ngIf="!task.user" class="text-danger">
+            Not Assigned
+          </span>
+        </td>
         <td>{{ task.id }}</td>
         <td>
           <button (click)="deleteTask(task)" class="btn btn-danger bg-danger">

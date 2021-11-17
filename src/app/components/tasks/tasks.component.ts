@@ -18,7 +18,7 @@ export class TasksComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])
   onKeyDownHandler(event: any) {
     /* event.key - grazina paspausto mygtuko koda */
-    // console.log(event);
+    console.log(event);
     console.log(event.keyCode);
     // Escape - keyCode yra 27
     if (event.keyCode === 27) {
@@ -64,7 +64,7 @@ export class TasksComponent implements OnInit {
   getTasks() {
     // Gauname duomenis is task Service
     this._taskService
-      .getTasks()
+      .getTasks(true)
       .subscribe((data: Task[]) => {
         this.tasks = data;
         console.log(this.tasks);

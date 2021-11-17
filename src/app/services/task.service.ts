@@ -9,12 +9,25 @@ import { Task } from '../interfaces/task';
 export class TaskService {
 
   // API Adresas is kur gausime duomenis
-  private apiUrl : string = 'http://localhost:3000/tasks';
-  constructor(private http : HttpClient) { }
+  private apiUrl: string = 'http://localhost:3000/tasks';
+  constructor(private http: HttpClient) { }
 
   // Interface'o panaudojimas service dalyje
-  getTasks() : Observable<Task[]> {
-    let uri = this.apiUrl
+  getTasks(withUserData: boolean = false): Observable<Task[]> {
+    let uri = this.apiUrl;
+
+    if (withUserData) {
+      /*
+        Gauti duomenis su papildomais duomenimis:
+        REST API Endpoint - Gauti Task duomenis kartu su User duomenimis: http://localhost:3000/tasks?_expand=user
+        REST API Endpoint - Gauti User duomenis kartu su Task duomenimis: http://localhost:3000/users?_embed=tasks
+
+        JSON Server duomenu relationships dokumentacija: https://github.com/typicode/json-server#relationships
+      */
+      // Pridedame prie uzklausos: ?_expand=user
+      uri += "?_expand=user";
+    }
+
     // Siuncama get uzklausa i API
 
     // .get() - gauname duomenis is duombazes
@@ -24,10 +37,10 @@ export class TaskService {
   }
 
   // Pakeiciame task.completed reiksme Serveryje
-  toggleTask(task : Task) {
+  toggleTask(task: Task) {
 
     // Budas 1 aprasyti kreipimasi i url
-    let uri = this.apiUrl + "/" +  task.id;
+    let uri = this.apiUrl + "/" + task.id;
     // Budas 2 aprasyti kreipimasi i url *string sujungimas
     uri = `${this.apiUrl}/${task.id}`;
     console.log("Uzklausa: " + uri);
@@ -44,14 +57,14 @@ export class TaskService {
     return this.http.patch(uri, task);
   }
 
-  createTask(task : Task) {
+  createTask(task: Task) {
     let uri = this.apiUrl;
     // Kreipdamiesi POST metodu, galime sukurti nauja uzduoty duombazeje
     return this.http.post(uri, task);
   }
 
-  deleteTask(task : Task) {
-    let uri = this.apiUrl + "/" +  task.id;
+  deleteTask(task: Task) {
+    let uri = this.apiUrl + "/" + task.id;
 
 
     // Kreipdamisei DELETE metodu i: http://localhost:3000/tasks/id

@@ -25,7 +25,7 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
 
 <form (ngSubmit)="taskCreate(taskForm)" #taskForm="ngForm">
   <div class="row">
-    <div class="col-4">
+    <div class="col-4 mb-3">
       <div class="form-group">
         <!-- Formos laukelio validacija -->
         <!-- #title - lokalus template kintamasis (pasiekiams tik siame html faile) -->
@@ -58,7 +58,7 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-4 mb-3">
       <div class="form-group">
         <input type="text" placeholder="Enter Author name" [(ngModel)]="task.author" name="author" class="form-control"
           required #author="ngModel" [class.is-valid]="author.valid"
@@ -66,7 +66,7 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-4 mb-3">
       <select name="priority" [(ngModel)]="task.priority" class="form-select" required #priority="ngModel"
         [class.is-valid]="priority.valid" [class.is-invalid]="priority.invalid && taskForm.submitted">
         <!-- Perduodame su ngValue string reiksme -->
@@ -77,8 +77,17 @@ ngForm - pasakoma, kad sis kintamasis saugo visos formos duomenis
       </select>
     </div>
 
-    <div class="col-4">
-      <div class="form-group mt-3">
+    <div class="col-4 mb-3">
+      <select name="userId" class="form-select" [(ngModel)]="task.userId">
+        <option value="0">Select user</option>
+        <option *ngFor="let user of users" [value]="user.id">
+          {{ user.email }} - {{ user.id }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-4 mb-3">
+      <div class="form-group">
         <!-- Dinaminio disabled atributo pavyzdys
         [disabled]="taskForm.invalid"
         -->
