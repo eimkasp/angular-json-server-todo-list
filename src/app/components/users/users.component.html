@@ -46,7 +46,9 @@
   <div class="col-sm-6" *ngFor="let user of users">
     <div class="card mb-3">
       <div class="card-header">
-        {{ user.name }}
+        <a routerLink="/users/{{ user.id}}">
+          {{ user.name }}
+        </a>
       </div>
 
       <div class="card-body">

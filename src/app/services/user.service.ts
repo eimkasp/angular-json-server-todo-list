@@ -20,6 +20,13 @@ export class UserService {
     return this.http.get(uri);
   }
 
+  getUser(id : any) {
+    let uri = this.apiUrl;
+
+    uri += "/" + id;
+    return this.http.get(uri);
+  }
+
   createUser(user : User) {
     let uri = this.apiUrl;
 
