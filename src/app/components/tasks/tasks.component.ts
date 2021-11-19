@@ -85,13 +85,17 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    console.log('Task Will be deleted:');
-    console.log(task);
-    this._taskService.deleteTask(task).subscribe(data => {
-      console.log(data);
-      // Po sekmingo istrynimo atnaujiname tasks duomenis
-      this.getTasks();
-    });
+
+    let userAction = confirm("Do you want to delete the task " + task.title +  "?");
+
+    if(userAction) {
+      this._taskService.deleteTask(task).subscribe(data => {
+        console.log(data);
+        // Po sekmingo istrynimo atnaujiname tasks duomenis
+        this.getTasks();
+      });
+    }
+
   }
 
 }

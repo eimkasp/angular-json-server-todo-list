@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
   // Standartinis avatar, kuris naudojamas jei vartotojas neturi nuotraukos
   public defaultAvatar: string = "assets/img/default-avatar.jpeg";
 
-  public hideForm : boolean = true;
+  public hideForm: boolean = true;
 
   constructor(private _userService: UserService) { }
 
@@ -56,6 +56,17 @@ export class UsersComponent implements OnInit {
       this.newUser.email = "";
       this.getUsers();
     });
+  }
+
+  deleteUser(user: User) {
+    let userAction = confirm("Do you want to delete the user " + user.name +  "?");
+
+    if (userAction) {
+      this._userService.deleteUser(user).subscribe((data: any) => {
+        this.getUsers();
+      });
+    }
+
   }
 
 

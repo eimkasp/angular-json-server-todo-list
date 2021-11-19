@@ -1,50 +1,60 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Užduotis 1",
-      "author": "typicode",
+      "title": "31312",
       "completed": false,
-      "userId": 1
+      "author": "321312",
+      "priority": "low",
+      "userId": 0,
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Sukurti taskDelte funkcija",
+      "title": "Uzduotis vartotojas 1",
+      "completed": false,
+      "author": "Test",
+      "priority": "high",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "title": "Uzduotis vartotojas 2",
+      "completed": false,
       "author": "labas",
-      "completed": true,
-      "userId": 2
+      "priority": "low",
+      "userId": "2",
+      "id": 3
+    },
+    {
+      "title": "Uzduotis vartotojas 3",
+      "completed": false,
+      "author": "labas",
+      "priority": "low",
+      "userId": "3",
+      "id": 4
+    },
+    {
+      "title": "Uzduotis Vartotojas 0",
+      "completed": false,
+      "author": "Null",
+      "priority": "high",
+      "userId": "0",
+      "id": 5
+    },
+    {
+      "title": "No User",
+      "completed": false,
+      "author": "no",
+      "priority": "high",
+      "userId": 0,
+      "id": 6
     },
     {
       "title": "Labas",
       "completed": false,
-      "author": "Test",
-      "priority": "high",
-      "id": 3,
-      "userId": 2
-    },
-    {
-      "title": "3211",
-      "completed": false,
-      "author": "312312",
+      "author": "123",
       "priority": "high",
       "userId": 0,
-      "id": 4
-    },
-    {
-      "title": "Uzduotis vartotojui 3",
-      "completed": true,
-      "author": "Test",
-      "priority": "high",
-      "userId": "3",
-      "id": 5
-    },
-    {
-      "title": "Uzduotis - vartotojui 4",
-      "completed": false,
-      "author": "labas",
-      "priority": "low",
-      "userId": "4",
-      "id": 6
+      "id": 7
     }
   ],
   "users": [

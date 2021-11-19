@@ -41,7 +41,7 @@
         <td><i class="bi bi-activity"></i> Author: {{ task.author }}</td>
         <td>
           <span *ngIf="task.user">
-            <a routerLink="/users/{{ task.userId }}">
+            <a routerLink="/users/{{ task.user_id }}">
               Assigned to: {{ task.user?.email }}
             </a>
           </span>

@@ -46,9 +46,19 @@
   <div class="col-sm-6" *ngFor="let user of users">
     <div class="card mb-3">
       <div class="card-header">
-        <a routerLink="/users/{{ user.id}}">
-          {{ user.name }}
-        </a>
+        <div class="row">
+          <div class="col-8">
+            <a routerLink="/users/{{ user.id}}">
+              {{ user.name }}
+            </a>
+          </div>
+          <div class="col-4 text-end">
+            <button class="btn btn-danger" (click)="deleteUser(user)">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
 
       <div class="card-body">

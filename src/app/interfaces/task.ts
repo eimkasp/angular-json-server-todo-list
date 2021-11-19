@@ -7,6 +7,6 @@ export interface Task {
   author: string,
   completed: boolean, // true arba false
   priority? : string
-  userId : number // Laukelis kuris nurodo userId - users lenteleje/objekte - db.json faile
+  user_id : number // Laukelis kuris nurodo userId - users lenteleje/objekte - db.json faile
   user?: User // Kreipiantis i http://localhost:3000/tasks?_expand=user JSON server mums grazins user duomenis papildomame user stulpelyje
 }
