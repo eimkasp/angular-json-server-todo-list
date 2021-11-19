@@ -25,7 +25,7 @@ export class TaskService {
         JSON Server duomenu relationships dokumentacija: https://github.com/typicode/json-server#relationships
       */
       // Pridedame prie uzklausos: ?_expand=user
-      uri += "?_expand=user";
+      // uri += "?_expand=user";
     }
 
     // Siuncama get uzklausa i API

@@ -18,7 +18,7 @@ export class TaskCreateComponent implements OnInit {
     completed: false,
     author: "",
     priority: "",
-    userId: 0, // Priskiriame userId reiksme 0 - neegzistuojantis vartotojas
+    user_id: 0, // Priskiriame userId reiksme 0 - neegzistuojantis vartotojas
   };
 
   public priorties: string[] = ['low', 'medium', 'high'];
