@@ -68,10 +68,10 @@ export class TasksComponent implements OnInit {
           });
         })
       )
-      .subscribe((data) => {
+      .subscribe((tasks : Task[]) => {
         console.log("Tasks duomenys");
-        console.log(data);
-        this.tasks = data;
+        console.log(tasks);
+        this.tasks = tasks;
       });
 
 

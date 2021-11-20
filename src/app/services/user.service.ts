@@ -21,11 +21,11 @@ export class UserService {
     return this.http.get<User[]>(uri);
   }
 
-  getUser(id : any) {
+  getUser(id : any) : Observable<User> {
     let uri = this.apiUrl;
 
     uri += "/" + id;
-    return this.http.get(uri);
+    return this.http.get<User>(uri);
   }
 
   createUser(user : User) {

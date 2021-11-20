@@ -35,7 +35,7 @@ export class UserDetailsComponent implements OnInit {
     */
     this.userId = this.route.snapshot.paramMap.get('id');
 
-    this._userService.getUser(this.userId).subscribe((data: any) => {
+    this._userService.getUser(this.userId).subscribe((data: User) => {
       this.user = data;
       this.getUserTasks();
     })
@@ -51,7 +51,7 @@ export class UserDetailsComponent implements OnInit {
           return tasks.filter(task => task.user_id == this.user?.id);
         }),
       )
-      .subscribe((tasks: any) => {
+      .subscribe((tasks: Task[]) => {
         this.userTasks = tasks;
       });
   }
