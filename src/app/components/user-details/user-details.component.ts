@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Task } from 'src/app/interfaces/task';
 import { User } from 'src/app/interfaces/user';
 import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
@@ -14,6 +15,8 @@ export class UserDetailsComponent implements OnInit {
 
   public user: User | null = null;
   private userId: string | null = null;
+
+  public userTasks : Task[] | null = null;
 
   constructor(
     private _userService: UserService,
