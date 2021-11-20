@@ -1,7 +1,10 @@
 import { fn } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, HostListener, Host } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { map, switchMap, mergeMap } from 'rxjs/operators';
 import { Task } from 'src/app/interfaces/task';
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -27,7 +30,9 @@ export class TasksComponent implements OnInit {
   }
 
   // Injectiname tasks service i komponenta
-  constructor(private _taskService: TaskService) {
+  constructor(private _taskService: TaskService,
+    private _userService: UserService
+  ) {
     this.getTasks();
   }
 
@@ -63,12 +68,30 @@ export class TasksComponent implements OnInit {
 
   getTasks() {
     // Gauname duomenis is task Service
-    this._taskService
-      .getTasks(true)
-      .subscribe((data: Task[]) => {
-        this.tasks = data;
-        console.log(this.tasks);
+    forkJoin([
+      this._taskService.getTasks(true),
+      this._userService.getUsers()
+    ])
+      .pipe(
+        map(([tasks, users]) => {
+          return tasks.map(item => {
+            // Priskiriamas user objektas pagal user_id stulpeli task objekte
+            item.user = users.filter(user => user.id == item.user_id)[0];
+            return item;
+          })
+        })
+      )
+      .subscribe((data1) => {
+        this.tasks = data1;
       });
+
+
+    // this._taskService
+    //   .getTasks(true)
+    //   .subscribe((data: Task[]) => {
+    //     this.tasks = data;
+    //     console.log(this.tasks);
+    //   });
   }
 
   toggleTask(task: Task) {
@@ -86,9 +109,9 @@ export class TasksComponent implements OnInit {
 
   deleteTask(task: Task) {
 
-    let userAction = confirm("Do you want to delete the task " + task.title +  "?");
+    let userAction = confirm("Do you want to delete the task " + task.title + "?");
 
-    if(userAction) {
+    if (userAction) {
       this._taskService.deleteTask(task).subscribe(data => {
         console.log(data);
         // Po sekmingo istrynimo atnaujiname tasks duomenis

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { User } from 'src/app/interfaces/user';
+import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,6 +17,7 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
+    private _taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -29,9 +32,27 @@ export class UserDetailsComponent implements OnInit {
     */
     this.userId = this.route.snapshot.paramMap.get('id');
 
-    this._userService.getUser(this.userId).subscribe((data: any) => {
-      this.user = data;
-    })
+
+    // Vartotojo info
+    this._userService.getUser(this.userId)
+      .subscribe((data: User) => {
+        this.user = data;
+        this.getUserTask();
+      })
+  }
+
+  getUserTask() {
+    // Vartotojo uzduotys
+    this._taskService.getTasks()
+    .pipe(
+      map(data => {
+        console.log(this.user?.id);
+        return data.filter(task => task.id == this.user?.id)
+      })
+    )
+    .subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
 }
