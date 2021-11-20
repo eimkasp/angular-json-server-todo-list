@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 
 @Injectable({
@@ -15,16 +16,16 @@ export class UserService {
   }
 
   // Funkcija gauti visiems useriams
-  getUsers() {
+  getUsers() : Observable<User[]> {
     let uri = this.apiUrl;
-    return this.http.get(uri);
+    return this.http.get<User[]>(uri);
   }
 
-  getUser(id : any) {
+  getUser(id : any) : Observable<User> {
     let uri = this.apiUrl;
 
     uri += "/" + id;
-    return this.http.get(uri);
+    return this.http.get<User>(uri);
   }
 
   createUser(user : User) {
